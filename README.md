@@ -19,5 +19,8 @@ We could have some orchestrating process who spawns threads for both and let the
 Otherwise we can just process the entire pipeline sequentially i.e having `scrape.py` polling some websites for 5 seconds before finishing execution and passing the gathered data to `console.py`.
 This could then be called by some orchestrating party every 6 seconds.
 
+- [ ] OS level: try spawning 2 python processes and redirect stdout>stdin
 - [ ] look into simple [threaded solution](https://docs.python.org/3/library/threading.html#condition-objects)
 - [ ] look into generators `yield`
+
+![OS-level piping attempt](/assets/proc_stdin.png)
