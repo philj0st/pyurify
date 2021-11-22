@@ -2,7 +2,10 @@
 event processing pipeline
 run `python scrape.py | python console.py` in bash.
 
-### Piping
+having both scripts running concurrently requires a bit more setup.
+create a fifo with `$ mkfifo connector` then run `$ python console.py < connector` and `python scrape.py > connector` in two different terminals.
+
+### about the Piping
 When bashing `python scrape.py | python console.py` with the most naive implementation of 
 ```
 while True:
@@ -21,7 +24,8 @@ But this complicates the buffering of the data piped between the processes. Let'
 Otherwise we can just process the entire pipeline sequentially i.e having `scrape.py` polling some websites for 5 seconds before finishing execution and passing the gathered data to `console.py`.
 This could then be called by some orchestrating party every 6 seconds.
 
-- [ ] OS level: try spawning 2 python processes and redirect stdout>stdin
+- [x] OS level: try spawning 2 python processes and redirect stdout>stdin
+    - [ ] try doing it without mkfifo step
 - [ ] look into simple [threaded solution](https://docs.python.org/3/library/threading.html#condition-objects)
 - [ ] look into generators `yield`
 
