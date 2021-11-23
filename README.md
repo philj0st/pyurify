@@ -6,6 +6,7 @@ having both scripts running concurrently requires a bit more setup.
 create a fifo with `$ mkfifo connector` then run `$ python console.py < connector` and `python scrape.py > connector` in two different terminals.
 
 ### about the Piping
+#### execution
 When bashing `python scrape.py | python console.py` with the most naive implementation of 
 ```
 while True:
@@ -33,5 +34,10 @@ This could then be called by some orchestrating party every 6 seconds.
 Attempts of trying to redirect something to the stdin of a `python console.py` process the naive way:
 ![OS-level piping attempt](/assets/proc_stdin.png)
 For some reason they get printed to the terminal but not processed by the python script so the timestamp is missing.
+
+#### serialization
+When piping on OS-level vs. inside a python script (compare [sklearn Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)) we have the problem of serializing whatever datastructure we end up using.
+But in turn we could incorporate stages beyond the limit of python scripts i.e coreutils or some stages written in other languages. Then again if that's the exception we could still write a python wrapper for these.
+
 
 [^1]: not sure if this will be the OS scheduler handling or if the python interpreter/runtime(?) has some internal scheduling going on.🤔 
