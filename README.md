@@ -8,7 +8,7 @@ create a fifo with `$ mkfifo connector` then run `$ python console.py < connecto
 ## requirements
 
 - `push.py` requires a ACCESS_TOKEN as environment variable. to be created on [Pushbullet](https://pushbullet.com/#settings).
-- for some reason [anibis.ch](https://anibis.ch) only seems to allow traffic from switzerland, so to use the [anibis.ch.py](./blob/main/anibis.ch.py) example use a VPN.
+- for some reason [anibis.ch](https://anibis.ch) only seems to allow traffic from switzerland, so to use the [anibis.ch.py](./anibis.ch.py) example use a VPN.
 
 
 ### about the Piping
