@@ -5,6 +5,12 @@ run `python scrape.py | python console.py` in bash.
 having both scripts running concurrently requires a bit more setup.
 create a fifo with `$ mkfifo connector` then run `$ python console.py < connector` and `python scrape.py > connector` in two different terminals.
 
+## requirements
+
+- `push.py` requires a ACCESS_TOKEN as environment variable. to be created on [Pushbullet](https://pushbullet.com/#settings).
+- for some reason [anibis.ch](https://anibis.ch) only seems to allow traffic from switzerland, so to use the [anibis.ch.py](./blob/main/anibis.ch.py) example use a VPN.
+
+
 ### about the Piping
 #### execution
 When bashing `python scrape.py | python console.py` with the most naive implementation of 
